@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.psltsk.com" xmlns="http://www.psltsk.com"
+	elementFormDefault="qualified">
+
+	<!-- configuration is the root element -->
+	<xs:element name="configuration">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="settings" type="settings" />
+				<xs:element name="organizations" type="organizationsType" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- settings, child of root configuration -->
+	<xs:complexType name="settings">
+		<xs:all>
+			<xs:element name="thresholds" type="thresholds"></xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="thresholds">
+		<xs:all>
+			<xs:element name="concurrent-job-threshold" type="xs:int"
+				minOccurs="0" maxOccurs="1" />
+			<xs:element name="rest-threshold" type="xs:int"
+				minOccurs="0" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+
+	<!-- organizations, child of root configuration -->
+	<xs:complexType name="organizationsType">
+		<xs:sequence>
+			<xs:element name="organization" type="organization"
+				minOccurs="1" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="organization">
+		<xs:sequence>
+			<xs:element name="org-meta-data" type="orgMetaData" />
+			<xs:element name="s-objects" type="sObjectsType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" />
+	</xs:complexType>
+
+
+	<xs:complexType name="orgMetaData">
+		<xs:all>
+			<xs:element name="version" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="date-format" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="sObjectsType">
+		<xs:sequence>
+			<xs:element name="s-object" type="sObject" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sObject">
+		<xs:sequence>
+			<xs:element name="name" type="objNameEnum" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="objNameEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="User"/>
+			<xs:enumeration value="Note"/>
+			<xs:enumeration value="Group"/>
+			<xs:enumeration value="Account"/>
+			<xs:enumeration value="FeedItem"/>
+            <xs:enumeration value="FeedComment"/>
+            <xs:enumeration value="Attachment"/>
+            <xs:enumeration value="GroupMember"/>
+            <xs:enumeration value="Document"/>
+            <xs:enumeration value="Opportunity"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns="http://www.psltsk.com"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://wwwpsltsk.com xsd/sfdc_config.xsd">
+   <settings>
+      <thresholds>
+         <concurrent-job-threshold>5</concurrent-job-threshold>
+         <rest-threshold>10000</rest-threshold>
+      </thresholds>
+   </settings>
+   <organizations>
+      <organization id="1001">
+         <org-meta-data>
+            <version>v28.0</version>
+            <date-format>yyyy-MM-dd'T'HH:mm:ss.SSSZ</date-format>
+         </org-meta-data>
+         <s-objects>
+            <s-object>
+               <name>User</name>
+            </s-object>
+            <s-object>
+               <name>Account</name>
+            </s-object>
+         </s-objects>
+      </organization>
+   </organizations>
+</configuration>
