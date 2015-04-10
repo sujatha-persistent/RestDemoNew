@@ -23,9 +23,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.jaxb.ObjNameEnum;
+
 public class GetObjectResponse {
 	public JSONObject showAccounts(String  instanceUrl, String accessToken,
-			Date date) throws  IOException,FileNotFoundException {
+			Date date, ObjNameEnum name) throws  IOException,FileNotFoundException {
 		CloseableHttpClient  httpclient = HttpClients.createDefault();
 		HttpGet httpGet = new HttpGet();
 
@@ -40,16 +42,17 @@ public class GetObjectResponse {
 		in.close();
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
-		try {
-			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v30.0/query");
+		try {///services/data/v20.0/sobjects/"+name+"/describe
+			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v20.0/query");
 			String lastSyncDate = prop.getProperty("lastSyncDate");
 
 			if(lastSyncDate != null && !lastSyncDate.equals("")){
-				String query = "SELECT Name, Id from Account where LastModifiedDate >"+ lastSyncDate;
+				String query = "SELECT Name, Id from "+name+" where LastModifiedDate >"+ lastSyncDate;
 				builder.setParameter("q", query);
 			}else{
-				builder.setParameter("q", "SELECT Name, Id from Account LIMIT 100");
+				builder.setParameter("q", "SELECT Name, Id from "+name);
 			}
+			System.out.println("builder:::"+builder);
 			if(date != null){
 				df.setTimeZone(TimeZone.getTimeZone("GMT"));
 				prop.setProperty("lastSyncDate", df.format(date));
@@ -74,7 +77,6 @@ public class GetObjectResponse {
 					e.printStackTrace();
 				}
 			}
-
 		} catch (URISyntaxException  e1) {
 			// TODO Auto­generated catch block
 			e1.printStackTrace();

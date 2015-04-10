@@ -1,0 +1,55 @@
+{
+  "objectDescribe": {
+    "updateable": true,
+    "urls": {
+      "sobject": "/services/data/v20.0/sobjects/Account",
+      "describe": "/services/data/v20.0/sobjects/Account/describe",
+      "rowTemplate": "/services/data/v20.0/sobjects/Account/{ID}"
+    },
+    "retrieveable": true,
+    "deletable": true,
+    "mergeable": true,
+    "label": "Account",
+    "deprecatedAndHidden": false,
+    "labelPlural": "Accounts",
+    "feedEnabled": true,
+    "triggerable": true,
+    "createable": true,
+    "undeletable": true,
+    "name": "Account",
+    "keyPrefix": "001",
+    "customSetting": false,
+    "layoutable": true,
+    "searchable": true,
+    "queryable": true,
+    "activateable": false,
+    "replicateable": true,
+    "custom": false
+  },
+  "recentItems": [
+    {
+      "Name": "Express Logistics and Transport",
+      "Id": "00128000002k7q5AAA",
+      "attributes": {
+        "type": "Account",
+        "url": "/services/data/v20.0/sobjects/Account/00128000002k7q5AAA"
+      }
+    },
+    {
+      "Name": "GenePoint",
+      "Id": "00128000002k7pxAAA",
+      "attributes": {
+        "type": "Account",
+        "url": "/services/data/v20.0/sobjects/Account/00128000002k7pxAAA"
+      }
+    },
+    {
+      "Name": "sForce",
+      "Id": "00128000002k7q8AAA",
+      "attributes": {
+        "type": "Account",
+        "url": "/services/data/v20.0/sobjects/Account/00128000002k7q8AAA"
+      }
+    }
+  ]
+}
