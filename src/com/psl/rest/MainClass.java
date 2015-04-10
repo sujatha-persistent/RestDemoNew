@@ -17,7 +17,7 @@ public class MainClass{
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws SchedulerException, IOException {
-		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		scheduler.scheduleAtFixedRate(new RunnableClass(), 5, 21600,TimeUnit.SECONDS);
+		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);//21600
+		scheduler.scheduleAtFixedRate(new RunnableClass(), 5, 30,TimeUnit.SECONDS);
 	}
 }

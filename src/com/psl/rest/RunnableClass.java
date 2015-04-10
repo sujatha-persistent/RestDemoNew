@@ -46,14 +46,13 @@ public class RunnableClass implements Runnable{
 			String client_secret = prop.getProperty("client_secret");
 			String clientId = prop.getProperty("clientId");
 			String tokenUrl = prop.getProperty("tokenUrl");
-
 			SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
 			Date d1 = format.parse(expire_time);
 			Date d2 = new Date();
 
 			long diff = d1.getTime() - d2.getTime();
-			long diffMinutes = diff / (60 * 1000) % 60;
-			if(diffMinutes >= 360){
+			long diffMinutes = diff / (60 * 1000) % 60;//360
+			if(diff <0 || diffMinutes >= 360){
 				RefreshingAccessToken refreshingMethod = new RefreshingAccessToken();
 				accessToken = refreshingMethod.execAccessToken(refresh_token, clientId, client_secret, tokenUrl);
 			}
@@ -95,14 +94,12 @@ public class RunnableClass implements Runnable{
 						sobjects.mkdir();
 					}
 
-					if(name.equals(ObjNameEnum.ACCOUNT)){
-						String pathAcntFile = pathforSobj+"/"+name+".json";
-						accntRsp = authResp.showAccounts(instanceUrl, accessToken,new Date());
-						BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathAcntFile));
-						bufferedWriter.write(accntRsp.toString(2));
-						bufferedWriter.flush();
-						bufferedWriter.close();
-					}
+					String pathAcntFile = pathforSobj+"/"+name+".json";
+					accntRsp = authResp.showAccounts(instanceUrl, accessToken,new Date(),name);
+					BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(pathAcntFile));
+					bufferedWriter.write(accntRsp.toString(2));
+					bufferedWriter.flush();
+					bufferedWriter.close();
 				}
 			}
 		}catch(JAXBException | IOException e){

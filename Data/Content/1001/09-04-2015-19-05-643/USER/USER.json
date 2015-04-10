@@ -1,0 +1,38 @@
+{
+  "objectDescribe": {
+    "updateable": true,
+    "urls": {
+      "sobject": "/services/data/v20.0/sobjects/User",
+      "describe": "/services/data/v20.0/sobjects/User/describe",
+      "rowTemplate": "/services/data/v20.0/sobjects/User/{ID}",
+      "passwordUtilities": "/services/data/v20.0/sobjects/User/{ID}/password"
+    },
+    "retrieveable": true,
+    "deletable": false,
+    "mergeable": false,
+    "label": "User",
+    "deprecatedAndHidden": false,
+    "labelPlural": "Users",
+    "feedEnabled": true,
+    "triggerable": true,
+    "createable": true,
+    "undeletable": false,
+    "name": "User",
+    "keyPrefix": "005",
+    "customSetting": false,
+    "layoutable": false,
+    "searchable": true,
+    "queryable": true,
+    "activateable": false,
+    "replicateable": true,
+    "custom": false
+  },
+  "recentItems": [{
+    "Name": "sujatha n",
+    "Id": "00528000000XNpTAAW",
+    "attributes": {
+      "type": "User",
+      "url": "/services/data/v20.0/sobjects/User/00528000000XNpTAAW"
+    }
+  }]
+}

@@ -43,7 +43,6 @@ public class OAuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
-	private static final String REFRESH_TOKEN = "REFRESH_TOKEN";
 	private static final String INSTANCE_URL = "INSTANCE_URL";
 
 	public String clientId = null;
@@ -127,16 +126,8 @@ public class OAuthServlet extends HttpServlet {
 					httpClient.close();
 				}
 			}
-
-			// Set a session attribute so that other servlets can get the access
-			// token
 			request.getSession().setAttribute(ACCESS_TOKEN, accessToken);
-
-			// We also get the instance URL from the OAuth response, so set it
-			// in the session too
 			request.getSession().setAttribute(INSTANCE_URL, instanceUrl);
-			request.getSession().setAttribute(REFRESH_TOKEN, refresh_token);
-
 		}
 		response.sendRedirect(request.getContextPath() + "/DemoRest");
 	}
